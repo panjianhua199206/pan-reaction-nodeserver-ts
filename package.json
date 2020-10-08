@@ -1,5 +1,5 @@
 {
-  "name": "TypeScriptNodeArchitectureDesign",
+  "name": "pan-reaction-nodeserver-ts",
   "version": "1.0.0",
   "main": "src/app.ts",
   "author": "PanJianHua",
