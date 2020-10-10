@@ -14,7 +14,6 @@ export default {
       ...mysqlConfig,
       multipleStatements: true // 多语句查询
     });
-	console.log(pool)
     // 全局pool
     global['pool'] = pool;
   }
