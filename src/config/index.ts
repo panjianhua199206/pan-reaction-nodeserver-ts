@@ -5,7 +5,7 @@ export default {
     const mysqlConfig = {
       host: 'localhost',
       user: 'root',
-      password: 'pig666six',
+      password: 'pan666six',
       database: 'reaction',
       port: '3306'
     };

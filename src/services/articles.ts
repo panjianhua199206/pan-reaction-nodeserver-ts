@@ -9,10 +9,12 @@ const articlesSever: any = {
    * */
   list: async ({ page, pageSize, keyWord, tagsId }: any) => {
     if (!page) {
-      return util.dataTemplate(400, false, "页码数必传");
+      page = 1; // 前端不传页面，则默认查询第一页
+      // return util.dataTemplate(400, false, "页码数必传");
     }
     if (!pageSize) {
-      return util.dataTemplate(400, false, "条数必传");
+      pageSize = 10; // 前端不传条数，则默认查询10条
+      // return util.dataTemplate(400, false, "条数必传");
     }
     const data = await articlesModel.list({ page, pageSize, keyWord, tagsId });
     return util.dataTemplate(200, true, "", data.res, { total: data.total });

@@ -19,7 +19,8 @@ const articles = [
           data = await articlesSever.list(query);
         }
       } else {
-        data = util.dataTemplate(400, false, "页码数和条数不能为空");
+        data = await articlesSever.list(query);
+        // data = util.dataTemplate(400, false, "页码数和条数不能为空");
       }
       res.json(data);
     },
