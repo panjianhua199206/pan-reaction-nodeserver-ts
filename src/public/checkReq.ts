@@ -16,7 +16,7 @@ class checkReq {
    * */
   public check(request: any, reqName: string, type = "string") {
     this.errorStr = "";
-    if (this[reqName] === undefined) {
+    if (reqName === undefined) {
       this.errorStr = "参数不正确";
       return false;
     }
@@ -24,22 +24,24 @@ class checkReq {
     if (type.toLocaleLowerCase() === "number") {
       request = Number(request);
     }
-    const [reqOf, nameOf] = [typeof request, typeof this[reqName]];
-    if (reqOf != nameOf) {
-      this.errorStr = `${reqName}参数为${nameOf}类型,不能为其他类型`;
+    console.log(typeof request,request);
+    
+    if (typeof request != typeof this[reqName]) {
+      this.errorStr = `${reqName}参数为${typeof this[reqName]}类型,不能为其他类型`;
       return false;
     }
     /*特殊校验*/
     //数字类型校验
     if (type.toLocaleLowerCase() === "number") {
-      if (reqOf.toString() === "NaN") {
-        this.errorStr = `${reqName}参数为${nameOf}类型,不能为其他类型`;
+      console.log('request',request)
+      if (request === NaN) {
+        this.errorStr = `${reqName}参数为${typeof this[reqName]}类型,不能为其他类型`;
         return false;
       }
     }
     //对象校验
     if (type.toLocaleLowerCase() === "object") {
-      if (JSON.stringify(reqOf) === "{}") {
+      if (JSON.stringify(typeof request) === "{}") {
         this.errorStr = `${reqName}参数不正确`;
         return false;
       }
@@ -53,12 +55,12 @@ class checkReq {
     }
     //条数校验
     if (reqName === "pageSize") {
-      if (request < 0) {
+      if (request < 1) {
         this.errorStr = "条数不能小于1";
         return false;
       }
     }
-    if (reqOf === nameOf) {
+    if ((typeof request === typeof this[reqName]) && request.toString() !== 'NaN') {
       return true;
     }
   }

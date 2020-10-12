@@ -6,8 +6,8 @@ const articles = [
   {
     path: "/articles/list",
     requestType: "get",
-    callBackFunction: async (dataObj) => {
-      let { data, req, res, next }: any = dataObj;
+    callBackFunction: async (dataObj: any) => {
+      let { data, req, res }: any = dataObj;
       const { query } = req;
       const { page, pageSize } = query;
       if (JSON.stringify(query) !== "{}") {
@@ -29,7 +29,7 @@ const articles = [
     //文章详情接口
     path: "/articles/detail",
     requestType: "get",
-    callBackFunction: async (dataObj) => {
+    callBackFunction: async (dataObj: any) => {
       let { data, req, res }: any = dataObj;
       const { query } = req;
       if (JSON.stringify(query) !== "{}") {

@@ -23,7 +23,7 @@ endRouterList.map((item) => {
 });
 
 routerMethod(router, "*", (dataObj: any) => {
-  console.log(dataObj);
+  // console.log(dataObj);
   
   const { data, res }: any = dataObj;
   data.data = "404";
